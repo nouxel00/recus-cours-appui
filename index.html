@@ -234,14 +234,6 @@ tfoot td{font-weight:750;border-bottom:0}
           <input type="text" id="sResp">
         </div>
         <div>
-          <label for="sOm">Numéro Orange Money</label>
-          <input type="text" id="sOm" inputmode="tel">
-        </div>
-        <div>
-          <label for="sBenef">Nom du bénéficiaire Orange Money</label>
-          <input type="text" id="sBenef">
-        </div>
-        <div>
           <label for="sTitre">Intitulé</label>
           <input type="text" id="sTitre">
         </div>
@@ -282,8 +274,6 @@ var DEFAULTS = {
   titre: "Cours d'appui 1re année",
   montant: 10000,
   responsable: 'Pascal NADEMBEGA',
-  om: '76 81 86 94',
-  beneficiaire: 'YAOBBANDA PASCAL NADEMBEGA',
   matieres: 'Électricité générale, Mathématiques, Électronique numérique, Thermodynamique',
   wa: ''
 };
@@ -414,9 +404,7 @@ function renderReceipt(rec){
   var P = 48, inner = W - P*2;
 
   // calcul de la hauteur
-  ctx.font = f(400, 17);
-  var payLines = wrapText(ctx, 'Payé par Orange Money au ' + st.om + ' (' + st.beneficiaire + ')', inner - 40);
-  var H = 532 + payLines.length*24 + 10 + (mats.length ? 64 : 0) + (wa ? 246 : 0) + 20 + 98 + 44;
+  var H = 532 + (mats.length ? 64 : 0) + (wa ? 246 : 0) + 20 + 98 + 44;
   c.width = W*S; c.height = H*S; ctx.scale(S,S);
   ctx.textBaseline = 'alphabetic';
 
@@ -453,11 +441,6 @@ function renderReceipt(rec){
   fitFont(ctx, lettres, 500, 16, 11, inner - 48); ctx.fillStyle = '#8a3f00'; ctx.fillText(lettres, P + 24, y + 108);
   ctx.textAlign = 'right'; ctx.fillStyle = '#147a4b'; ctx.font = f(800, 18); ctx.fillText('✔ PAYÉ', W - P - 24, y + 36); ctx.textAlign = 'left';
   y += 120 + 34;
-
-  // paiement
-  ctx.fillStyle = '#44526b'; ctx.font = f(400, 17);
-  payLines.forEach(function(l){ ctx.fillText(l, P, y); y += 24; });
-  y += 10;
 
   // matières
   if(mats.length){
@@ -679,7 +662,7 @@ $('btnCsv').addEventListener('click', function(){
 function fillSettings(){
   var s = state.settings;
   $('sWa').value = s.wa; $('sMontant').value = s.montant; $('sResp').value = s.responsable;
-  $('sOm').value = s.om; $('sBenef').value = s.beneficiaire; $('sTitre').value = s.titre; $('sMatieres').value = s.matieres;
+  $('sTitre').value = s.titre; $('sMatieres').value = s.matieres;
 }
 $('formSettings').addEventListener('submit', function(e){
   e.preventDefault();
@@ -690,8 +673,6 @@ $('formSettings').addEventListener('submit', function(e){
   state.settings = {
     wa: wa, montant: Math.round(m),
     responsable: cleanSpaces($('sResp').value) || DEFAULTS.responsable,
-    om: cleanSpaces($('sOm').value) || DEFAULTS.om,
-    beneficiaire: cleanSpaces($('sBenef').value) || DEFAULTS.beneficiaire,
     titre: cleanSpaces($('sTitre').value) || DEFAULTS.titre,
     matieres: cleanSpaces($('sMatieres').value)
   };

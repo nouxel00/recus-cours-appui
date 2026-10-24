@@ -9,7 +9,7 @@ Logiciel pour générer les reçus de paiement des étudiants inscrits aux cours
 
 - Saisie du **nom**, du ou des **prénoms** et de la **classe** (1ATC/A, 1ATC/B, 1ATC/C)
 - Reçu numéroté automatiquement (N° 0001, 0002…), avec la date, le montant payé
-  (10 000 FCFA, en chiffres et en lettres), le paiement Orange Money,
+  (10 000 FCFA, en chiffres et en lettres),
   les matières et le **lien du groupe WhatsApp avec son code QR**
 - **Total d'argent encaissé**, total du jour et répartition par classe
 - Reçu à télécharger en image (à envoyer sur WhatsApp), à imprimer ou à enregistrer en PDF
@@ -39,7 +39,7 @@ Utilisez toujours le **même fichier**, dans le **même navigateur**, pour retro
 
 Ouvrez l'onglet **Paramètres** et collez le **lien du groupe WhatsApp**
 (dans WhatsApp : ouvrez le groupe → nom du groupe → *Inviter via un lien* → *Copier le lien*).
-Le montant, le numéro Orange Money et le nom du responsable peuvent aussi être modifiés à cet endroit.
+Le montant et le nom du responsable peuvent aussi être modifiés à cet endroit.
 
 ## Sauvegardez régulièrement
 
